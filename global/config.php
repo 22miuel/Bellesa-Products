@@ -1,6 +1,6 @@
 <?php
 define("SERVIDOR","localhost");
-define("USUARIO","ROOT");
-define("PASSWORD","localhost");
+define("USUARIO","root");
+define("PASSWORD","");
 define("BD","Bellesa-Products");
 ?>
