@@ -41,16 +41,24 @@ include 'global/conexion.php';
     <a href="#" class="badge badge-success">ver carrito</a>
 </div>
 <div class="row">
-    <div class="col-3">
+    <?php
+    $sentencia=$pdo->prepare("SELECT * FROM `tblproductos`");
+    $sentencia->execute();
+    $lisProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+    print_r($lisProductos);
+    ?>
+
+    <?php foreach($lisProductos as $producto){?>
+        <div class="col-3">
         <div class="card">
             <img 
             title="cera"
             class="card-img-top" 
-            src="https://roldacolombia.com/cdn/shop/files/fiber-wax-white-115-g-rolda-colombia-409010634_1512x.png?v=1682538883" 
-            alt="">
+            src="<?php echo $producto['Imagen'];?>" 
+            alt="<?php echo $producto['Nombre'];?>">
             <div class="card-body">
-                <span>cera</span>
-                <h5 class="card-title">$</h5>
+                <span><?php echo $producto['Nombre'];?></span>
+                <h5 class="card-title">$<?php echo $producto['Precio'];?></h5>
                 <p class="card-text">descripcion</p>
                 <button class="btn btn-primary" 
                 type="submit" 
@@ -61,6 +69,8 @@ include 'global/conexion.php';
             </div>
         </div>
     </div>
+        <?php }?>
+    
 </div>
 </div>
 </body>
